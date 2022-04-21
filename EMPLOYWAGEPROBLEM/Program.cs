@@ -1,31 +1,55 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
 Console.WriteLine("Welcome to Employ Wage Computation Program!");
-int WagePerHour = 20;
-int WorkingHours=0;
-int workingDaysPerMonth = 20;
+int wagePerHour = 20;
+int workingHours = 0;
+int workingDaysPerMonth = 0;
+int maxWorkingDays = 20;
+int maxWorkingHours = 100;
 Random attendanceCheck = new();
-int isPresent = attendanceCheck.Next(0, 3);
+int isPresent = attendanceCheck.Next(0, 4);
 Console.WriteLine(isPresent);
 
-switch (isPresent)
+if (isPresent == 1)
 {
-    case 1:
-        Console.WriteLine("Employee is present and working Full Time!");
-        WorkingHours = 8;
-        break;
-    case 2:
-        Console.WriteLine("Employee is present and working Part Time!");
-        WorkingHours = 4;
-        break;
-    case 0:
-        Console.WriteLine("Employee is Absent!");
-        WorkingHours = 0;
-        break;
-        //default:
-        //    Console.WriteLine("Something went wrong!!");
+    Console.WriteLine("Employee is present and working Full Time!");
+    // WorkingHours = 8;
 }
+else if (isPresent == 2)
+{
+    Console.WriteLine("Employee is working for part Time!");
+    //WorkingHours = 4;
+    //if isPresent is 2 then we consider it as part time and working hours are 4
+}
+else
+{
+    Console.WriteLine("Employee is Absent!");
+    //WorkingHours = 0;
+}
+while ((workingHours < maxWorkingHours) && (workingDaysPerMonth < maxWorkingDays))
+{
 
-int employeeWage = WagePerHour * WorkingHours;
-Console.WriteLine("The Employee Daily Wage is : " + employeeWage);
-int totalSalary = employeeWage * workingDaysPerMonth;
+    switch (isPresent)
+    {
+        case 1:
+            //Console.WriteLine("Employee is present and working Full Time!");
+            workingHours += 8;
+            break;
+        case 2:
+            //Console.WriteLine("Employee is present and working Part Time!");
+            workingHours += 4;
+            break;
+        case 0:
+            //Console.WriteLine("Employee is Absent!");
+            workingHours = 0;
+            break;
+        default:
+            //Console.WriteLine("Something went wrong!!");
+            break;
+    }
+    workingDaysPerMonth++;
+}
+Console.WriteLine("Total Working Hours : " + workingHours);
+Console.WriteLine("Total working Days Per Month : " + workingDaysPerMonth);
+int totalSalary = wagePerHour * workingHours;
 Console.WriteLine("Total Salary of Employee per Month : " + totalSalary);
