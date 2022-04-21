@@ -2,6 +2,7 @@
 Console.WriteLine("Welcome to Employ Wage Computation Program!");
 int WagePerHour = 20;
 int WorkingHours=0;
+int workingDaysPerMonth = 20;
 Random attendanceCheck = new();
 int isPresent = attendanceCheck.Next(0, 3);
 Console.WriteLine(isPresent);
@@ -24,5 +25,7 @@ switch (isPresent)
         //    Console.WriteLine("Something went wrong!!");
 }
 
-int EmployeeWage = WagePerHour * WorkingHours;
-Console.WriteLine("The Employee Daily Wage is : " + EmployeeWage);
+int employeeWage = WagePerHour * WorkingHours;
+Console.WriteLine("The Employee Daily Wage is : " + employeeWage);
+int totalSalary = employeeWage * workingDaysPerMonth;
+Console.WriteLine("Total Salary of Employee per Month : " + totalSalary);
