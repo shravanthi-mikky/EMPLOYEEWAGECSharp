@@ -11,9 +11,10 @@ namespace EMPLOYWAGEPROBLEM
         int wagePerHour = 20;
         int workingHours = 0;
         int workingDaysPerMonth = 0;
-        int maxWorkingDays = 20;
-        int maxWorkingHours = 100;
-        public void salary()
+        int maxWorkingDays;
+        int maxWorkingHours;
+        string Company;
+        public void salary(string Company, int wagePerHour,int maxWorkingDays, int maxWorkingHours)
         {
             
             Random attendanceCheck = new();
@@ -62,7 +63,7 @@ namespace EMPLOYWAGEPROBLEM
             Console.WriteLine("Total Working Hours : " + workingHours);
             Console.WriteLine("Total working Days Per Month : " + workingDaysPerMonth);
             int totalSalary = wagePerHour * workingHours;
-            Console.WriteLine("Total Salary of Employee per Month : " + totalSalary);
+            Console.WriteLine("Total Salary of Employee per Month in {0} is {1} ",Company,totalSalary);
         }
         
 
