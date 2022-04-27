@@ -14,7 +14,15 @@ namespace EMPLOYWAGEPROBLEM
         int maxWorkingDays;
         int maxWorkingHours;
         string Company;
-        public void salary(string Company, int wagePerHour,int maxWorkingDays, int maxWorkingHours)
+        int totalSalary;
+        public TotalSalary(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
+        {
+            this.Company = Company;
+            this.wagePerHour = wagePerHour;
+            this.maxWorkingDays = maxWorkingDays;
+            this.maxWorkingHours = maxWorkingHours;
+        }
+        public void salary()
         {
             
             Random attendanceCheck = new();
@@ -65,7 +73,10 @@ namespace EMPLOYWAGEPROBLEM
             int totalSalary = wagePerHour * workingHours;
             Console.WriteLine("Total Salary of Employee per Month in {0} is {1} ",Company,totalSalary);
         }
-        
+        public string toString()
+        {
+            return "Total Employee Wage for Company : " + this.Company + " is: " + this.totalSalary;
+        }
 
     }
 }
