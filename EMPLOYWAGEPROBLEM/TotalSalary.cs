@@ -8,46 +8,36 @@ namespace EMPLOYWAGEPROBLEM
 {
     public class TotalSalary
     {
-        int wagePerHour = 20;
-        int workingHours = 0;
-        int workingDaysPerMonth = 0;
-        int maxWorkingDays;
-        int maxWorkingHours;
-        string Company;
-        int totalSalary;
-        public TotalSalary(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
+        public int numOfCompany = 0;
+        public CompanyEmpWage[] companyEmpWageArray;
+        public TotalSalary()
         {
-            this.Company = Company;
-            this.wagePerHour = wagePerHour;
-            this.maxWorkingDays = maxWorkingDays;
-            this.maxWorkingHours = maxWorkingHours;
+            this.companyEmpWageArray = new CompanyEmpWage[5];
+        }
+        public void addCompanyEmpWage(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
+        {
+            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(Company, wagePerHour, maxWorkingDays, maxWorkingHours);
+            numOfCompany++;
         }
         public void salary()
         {
-            
-            Random attendanceCheck = new();
-            int isPresent = attendanceCheck.Next(0, 4);
-            Console.WriteLine(isPresent);
-            if (isPresent == 1)
+            for (int i = 0; i < numOfCompany; i++)
             {
-                Console.WriteLine("Employee is present and working Full Time!");
-                // WorkingHours = 8;
+                companyEmpWageArray[i].setTotalSalary(this.salary(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
             }
-            else if (isPresent == 2)
-            {
-                Console.WriteLine("Employee is working for part Time!");
-                //WorkingHours = 4;
-                //if isPresent is 2 then we consider it as part time and working hours are 4
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent!");
-                //WorkingHours = 0;
-            }
+        }
+        private int salary(CompanyEmpWage companyEmpWage)
+        {
+            int workingHours = 0;
+            int workingDaysPerMonth = 0;
+            int totalWorkingHours = 0;
 
-            while ((workingHours < maxWorkingHours) && (workingDaysPerMonth < maxWorkingDays))
+            while ((totalWorkingHours <= companyEmpWage.maxWorkingHours) && (workingDaysPerMonth < companyEmpWage.maxWorkingDays))
             {
-
+                Random attendanceCheck = new();
+                int isPresent = attendanceCheck.Next(0, 4);
+                workingDaysPerMonth++;
                 switch (isPresent)
                 {
                     case 1:
@@ -66,17 +56,14 @@ namespace EMPLOYWAGEPROBLEM
                         //Console.WriteLine("Something went wrong!!");
                         break;
                 }
-                workingDaysPerMonth++;
+                totalWorkingHours += workingHours;
+                Console.WriteLine("Days# : " + workingDaysPerMonth + " Total Working Hours :" + workingHours);
             }
-            Console.WriteLine("Total Working Hours : " + workingHours);
-            Console.WriteLine("Total working Days Per Month : " + workingDaysPerMonth);
-            int totalSalary = wagePerHour * workingHours;
-            Console.WriteLine("Total Salary of Employee per Month in {0} is {1} ",Company,totalSalary);
+            int amount = (totalWorkingHours * companyEmpWage.wagePerHour);
+            Console.WriteLine(amount);
+            return amount;
         }
-        public string toString()
-        {
-            return "Total Employee Wage for Company : " + this.Company + " is: " + this.totalSalary;
-        }
+       
 
     }
 }

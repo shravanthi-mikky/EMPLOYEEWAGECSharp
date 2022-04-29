@@ -3,9 +3,7 @@
 using EMPLOYWAGEPROBLEM;
 
 Console.WriteLine("Welcome to Employ Wage Computation Program!");
-TotalSalary abc = new TotalSalary("abc",20,2,10);
-TotalSalary xyz = new TotalSalary("xyz", 10, 4, 20);
-abc.salary();
-Console.WriteLine(abc.ToString());
-xyz.salary();
-Console.WriteLine(xyz.ToString());
+TotalSalary totalSalary = new();
+totalSalary.addCompanyEmpWage("abc", 20, 2, 10);
+totalSalary.addCompanyEmpWage("xyz",10,4,20);
+totalSalary.salary();
