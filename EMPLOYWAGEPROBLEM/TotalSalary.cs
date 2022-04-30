@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EMPLOYWAGEPROBLEM
 {
-    public class TotalSalary
+    public class TotalSalary : Isalary
     {
         public int numOfCompany = 0;
         public CompanyEmpWage[] companyEmpWageArray;
@@ -19,6 +19,7 @@ namespace EMPLOYWAGEPROBLEM
             companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(Company, wagePerHour, maxWorkingDays, maxWorkingHours);
             numOfCompany++;
         }
+
         public void salary()
         {
             for (int i = 0; i < numOfCompany; i++)
