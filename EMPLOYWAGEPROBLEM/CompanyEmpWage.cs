@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace EMPLOYWAGEPROBLEM
 {
+    public interface Isalary
+    {
+        public void salary();
+        public void addCompanyEmpWage(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours);
+    }
     public class CompanyEmpWage
     {
         public int wagePerHour;
