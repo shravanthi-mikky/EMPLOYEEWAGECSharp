@@ -11,14 +11,17 @@ namespace EMPLOYWAGEPROBLEM
     {
         public int numOfCompany = 0;
         private LinkedList<CompanyEmpWage> companyEmpWageList;
+        private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
         public TotalSalary()
         {
             this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
+            this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
         }
         public void addCompanyEmpWage(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(Company, wagePerHour, maxWorkingDays, maxWorkingHours);
             this.companyEmpWageList.AddLast(companyEmpWage);
+            this.companyToEmpWageMap.Add(Company, companyEmpWage);
         }
 
         public void salary()
@@ -66,6 +69,11 @@ namespace EMPLOYWAGEPROBLEM
             int amount = (totalWorkingHours * companyEmpWage.wagePerHour);
             Console.WriteLine(amount);
             return amount;
+        }
+        public void getTotalWage(string Company)
+        {
+            Console.WriteLine(this.companyToEmpWageMap[Company].totalSalary);
+            //return this.companyToEmpWageMap[Company].totalSalary;
         }
        
 
