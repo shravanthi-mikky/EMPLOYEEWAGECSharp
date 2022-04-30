@@ -7,3 +7,5 @@ TotalSalary totalSalary = new();
 totalSalary.addCompanyEmpWage("abc", 20, 2, 10);
 totalSalary.addCompanyEmpWage("xyz",10,4,20);
 totalSalary.salary();
+Console.Write("Total Wage for abc Company : ");
+totalSalary.getTotalWage("abc");
