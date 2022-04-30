@@ -58,6 +58,8 @@ namespace EMPLOYWAGEPROBLEM
                         //Console.WriteLine("Something went wrong!!");
                         break;
                 }
+                int dailyWage = workingHours * companyEmpWage.wagePerHour;
+                Console.WriteLine("Wage per day : "+ dailyWage);
                 totalWorkingHours += workingHours;
                 Console.WriteLine("Days# : " + workingDaysPerMonth + " Total Working Hours :" + workingHours);
             }
