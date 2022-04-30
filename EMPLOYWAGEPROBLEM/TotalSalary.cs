@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,23 +10,23 @@ namespace EMPLOYWAGEPROBLEM
     public class TotalSalary : Isalary
     {
         public int numOfCompany = 0;
-        public CompanyEmpWage[] companyEmpWageArray;
+        private LinkedList<CompanyEmpWage> companyEmpWageList;
         public TotalSalary()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
         }
         public void addCompanyEmpWage(string Company, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(Company, wagePerHour, maxWorkingDays, maxWorkingHours);
-            numOfCompany++;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(Company, wagePerHour, maxWorkingDays, maxWorkingHours);
+            this.companyEmpWageList.AddLast(companyEmpWage);
         }
 
         public void salary()
         {
-            for (int i = 0; i < numOfCompany; i++)
+            foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
             {
-                companyEmpWageArray[i].setTotalSalary(this.salary(this.companyEmpWageArray[i]));
-                Console.WriteLine(this.companyEmpWageArray[i].toString());
+                companyEmpWage.setTotalSalary(this.salary(companyEmpWage));
+                Console.WriteLine(companyEmpWage.toString());
             }
         }
         private int salary(CompanyEmpWage companyEmpWage)
